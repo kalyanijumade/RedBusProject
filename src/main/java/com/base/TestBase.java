@@ -26,6 +26,7 @@ public class TestBase {
 	 
 	@BeforeMethod
 	public WebDriver initializeDriver() throws IOException {
+		//chrome option for disabling the Notification Alert
 		options = new ChromeOptions();
 		options.addArguments("--disable-notifications");
 		fis = new FileInputStream("D:\\KalyaniWorkspace\\AutomationTesting\\RedBusProject\\src\\main\\java\\com\\config\\config.properties");
