@@ -26,29 +26,11 @@ public class TestRedBus extends TestBase {
 		
 		// After landing to page will input data into From field 
 		driver.findElement(By.xpath("//*[@id=\"txtSource\"]")).sendKeys(fromCity);
-		List<WebElement> fromLocationList = driver.findElements(By.cssSelector("ul[id=\"C120_suggestion-wrap\"] li"));
-		for(WebElement fl : fromLocationList)
-		{
-			String locationName = fromCity +" (All Locations)";
-			if(fl.getText().equalsIgnoreCase(locationName)) {
-				fl.click();
-				break;
-			}
-		
-		}
+		selectCity(fromCity);
 		
 		// Input data in To Field
 		driver.findElement(By.xpath("//*[@id=\"txtDestination\"]")).sendKeys(toCity);
-		List<WebElement> toLocationList = driver.findElements(By.cssSelector("ul[id=\"C120_suggestion-wrap\"] li"));
-		for(WebElement tl : toLocationList)
-		{
-			String locationName = toCity +" (All Locations)";
-			if(tl.getText().equalsIgnoreCase(locationName)) {
-				tl.click();
-				break;
-			}
-		
-		}
+		selectCity(toCity);
 		
 		
 		//Date to be set in text box 
@@ -60,4 +42,25 @@ public class TestRedBus extends TestBase {
         driver.findElement(By.xpath("//*[@id=\"root\"]/div/div/div[1]/div[3]/button")).click();
 		
 	}
+	
+	
+	/**
+	 * This method will select the city from the dropdown
+	 * @param city
+	 */
+	private void selectCity(String city) {
+		List<WebElement> toLocationList = driver.findElements(By.cssSelector("ul[id=\"C120_suggestion-wrap\"] li"));
+		for(WebElement tl : toLocationList)
+		{
+			String locationName = city +" (All Locations)";
+			if(tl.getText().equalsIgnoreCase(locationName)) {
+				tl.click();
+				break;
+			}
+		
+		}
+		
+	}
+	
+	
 }
